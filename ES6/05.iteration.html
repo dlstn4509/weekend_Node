@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  // const axios = require('axios')
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  let sum = 0;
+  /* for (let i=0; i<arr.length; i++) {
+    sum += arr[i]
+  } */
+
+/*   for (let v of arr) {
+    sum += v
+  } */
+
+  // console.log(sum)
+
+  /* const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', onLoad);
+  xhr.open('get', 'https://jsonplaceholder.typicode.com/users');
+  xhr.send();
+
+  function onLoad() {
+    console.log(JSON.parse(xhr.responseText));
+  } */
+
+  axios.get('https://jsonplaceholder.typicode.com/users').then(onLoad)
+
+  function onLoad(r) {
+    console.log(r.data)
+  }
+
+
+</script>

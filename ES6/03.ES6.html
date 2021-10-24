@@ -1,0 +1,22 @@
+<script>
+  /* 
+  
+  */
+
+  function fn(a, b) {
+    return a + b;
+  };
+
+  const fn2 = (a, b) => {
+    return a + b;
+  };
+
+  function yearMonthDay(d) {
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  };
+  console.log(yearMonthDay(new Date()));
+
+  const yearMonthDay2 = d => d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  console.log(yearMonthDay2(new Date()));
+
+</script>
