@@ -7,8 +7,8 @@ const app = express();
 require('./modules/server-init')(app, 3001);
 
 /****************************** view engine *******************/
-app.set('view engine', 'ejs');
-app.set('views', './views-ejs');
+app.set('view engine', 'pug');
+app.set('views', './views-pug');
 app.locals.pretty = true;
 app.locals.headTitle = '뭐시깽이';
 
@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 /***************************** router init ********************/
-const commentRouter = require('./routes/comment-router');
+const postRouter = require('./routes/post-router');
+const userRouter = require('./routes/user-router');
 
-app.use('/comment', commentRouter);
+app.use('/post', postRouter);
+app.use('/user', userRouter);

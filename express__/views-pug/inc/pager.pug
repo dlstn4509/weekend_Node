@@ -1,0 +1,4 @@
+.text-center
+  - for(i=1; i<=pagerCnt; i++) {
+    a.pager.p-2(href=`/${pagerPath}?page=${i}`)= i
+  - }

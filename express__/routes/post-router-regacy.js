@@ -15,15 +15,18 @@ const userURL = 'https://jsonplaceholder.typicode.com/users';
 router.get('/', async (req, res, next) => {
   try {
     const page = Number(req.query.page || 1);
-    const { data: _lists } = await axios.get(listURL);
-    const { data: _users } = await axios.get(userURL);
-    const pagerCnt = Math.ceil(_lists.length / 8);
-    const lists = _lists.filter((v, i) => (page - 1) * 8 <= i && (page - 1) * 8 + 8 > i);
-    for (let list of _lists) {
-      let [{ name }] = _users.filter((v) => v.id === list.userId);
-      list.username = name;
+    const { data } = await axios.get(listURL);
+    const startIdx = (page - 1) * 10;
+    const lists = data.filter((v, i) => startIdx <= i && startIdx + 10 > i);
+    for (let list of lists) {
+      let { data: user } = await axios.get(userURL + '/' + list.userId);
+      list.username = user.name;
     }
-    res.render('post/list', { lists, pagerCnt, pagerPath: 'post' });
+    // lists.forEach(async (v, i) => {
+    //   let { data: user } = await axios.get(userURL + '/' + v.userId);
+    //   v.username = user.name;
+    // });
+    res.render('post/list', { lists });
   } catch (err) {
     console.log(err);
   }

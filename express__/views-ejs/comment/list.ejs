@@ -1,0 +1,23 @@
+<%- include('../inc/head.ejs') %>
+<table class="table table-success">
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th>이름</th>
+      <th>이메일</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let list of lists) { %>
+      <tr>
+        <td><%= list.id %></td>
+        <td><%= list.name %></td>
+        <td><%= list.email %></td>
+        <td><%= list.body %></td>
+      </tr>
+    <% } %>
+  </tbody>
+</div>
+<%- include('../inc/foot.ejs') %> 
+<%- include('../inc/pager.ejs') %> 

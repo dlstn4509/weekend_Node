@@ -1,0 +1,18 @@
+extends ../layout/list-layout.pug
+mixin tr(data)
+  tr
+    td.text-center.round.border= data.id
+    td.text-center.round.border= data.name
+    td.text-center.round.border= data.phone
+    td.text-center.round.border= data.email
+block content 
+  table.table.table-primary 
+    thead 
+      tr 
+        th 번호
+        th 이름
+        th 전화번호
+        th 이메일
+    tbody.table-light 
+      each list in users
+        +tr(list)
