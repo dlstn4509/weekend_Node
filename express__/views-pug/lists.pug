@@ -1,0 +1,28 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= headTitle
+    link(rel="stylesheet", href="/css/pug/lists.css")
+    style(type="text/css" rel="stylesheet").
+      table {
+        width: 80%;
+        margin: 1em auto;
+        text-align: center;
+      }
+  body 
+    h1  게시글
+    table(border=1)
+      thead
+        tr 
+          th 번호
+          th 제목
+          th 작성일
+      tbody 
+        each list in lists
+          tr
+            td= list.id
+            td= list.title
+            td= list.date

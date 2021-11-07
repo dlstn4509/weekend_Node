@@ -24,9 +24,48 @@
 
   axios.get('https://jsonplaceholder.typicode.com/users').then(onLoad)
 
-  function onLoad(r) {
-    console.log(r.data)
+  function onLoad({ data, headers }) {
+    console.log(data)
+    console.log(headers)
+    const { 'content-type': contentType } = headers
+    console.log(contentType);
   }
 
+
+  const weather = {
+    dt: 1635055214467,
+    place: {
+      cityName: 'Seoul',
+      country: 'Kr'
+    },
+    temp: {
+      average: 12.5,
+      max: 15.2,
+      min: 5.3
+    }
+  }
+
+  const users = [
+    { id: 1, name: '홍길동', age: 35, gender: 'M', score: '80' },
+    { id: 2, name: '홍길순', age: 25, gender: 'F', score: '30' },
+    { id: 3, name: '홍길만', age: 33, gender: 'M', score: '55' },
+    { id: 4, name: '홍길용', age: 80, gender: 'F', score: '93' },
+    { id: 5, name: '홍길님', age: 55, gender: 'F', score: '10' },
+    { id: 6, name: '홍길퓨', age: 14, gender: 'M', score: '43' },
+    { id: 7, name: '홍길', age: 59, gender: 'F', score: '73' }
+  ];
+
+  users.forEach((user, idx) => {
+    user.msg = `당신은 ${user.score < 60 ? '불' : '합격'}입니다.`
+  })
+  console.log(users)
+
+  const passUsers = users.filter(v => v.score > 60)
+  console.log(passUsers)
+
+  console.log(
+    users.keys
+
+  )
 
 </script>

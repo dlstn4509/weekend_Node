@@ -1,0 +1,11 @@
+<script>
+  let a = 10;
+  let b = 20;
+  const fn = (cb) => {
+    setTimeout(cb, 3000)
+  };
+  fn(() => {
+    console.log('fn 작업 완료')
+  });
+  console.log('작업 완료')
+</script>

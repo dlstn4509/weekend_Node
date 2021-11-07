@@ -1,0 +1,16 @@
+include ../inc/head
+div.container.my-5
+  table.table
+    thead.table.table-dark
+      tr 
+        th(style="width: 80px;") 번호
+        th(style="width: 150px;") 작성자
+        th 제목
+        th 내용
+    tbody 
+      each v in lists
+        tr 
+          th= v.id
+          th= v.username
+          th.text-left= v.title
+          th.text-left= v.body

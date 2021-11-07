@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 리스트</title>
+  <style>
+    table {width: 100%; border-collapse: collapse;}
+    th,td {padding: .5em; border-bottom: 1px solid #aaa;}
+  </style>
+</head>
+<body>
+  <div style="max-width: 1000px; margin: 100px auto;">
+    <table id="userLists">
+      <thead>
+        <tr>
+          <th>아이디</th>
+          <th>네임</th>
+          <th>폰</th>
+          <th>이메일</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    axios
+      .get('https://jsonplaceholder.typicode.com/users')
+      .then(({ data }) => {
+        let html = '';
+        for (let { id, name, phone, email } of data) {
+          html += `
+          <tr>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${phone}</td>
+            <td>${email}</td>
+          </tr>`
+        }
+        document.querySelector('#userLists tbody').innerHTML = html;
+      }).catch(err => {
+        console.log(err)
+      })
+  </script>
+</body>
+</html>
